@@ -28951,6 +28951,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
 spec:
+  type: NodePort
   ports:
   - name: https-controller
     port: 8082
@@ -28972,6 +28973,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
 spec:
+  type: NodePort
   ports:
   - name: webhook
     port: 7000
@@ -28993,6 +28995,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: isdargo-argocd-repo-server
 spec:
+  type: NodePort
   ports:
   - name: https-repo-server
     protocol: TCP
@@ -29021,11 +29024,11 @@ spec:
     protocol: TCP
     port: 80
     targetPort: server
+    nodePort: 30000
   - name: https
     protocol: TCP
     port: 443
     targetPort: server
-    NodePort: 30000
   selector:
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/instance: isdargo
@@ -29043,6 +29046,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
 spec:
+  type: NodePort
   ports:
   - name: http
     protocol: TCP
@@ -29069,6 +29073,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
 spec:
+  type: NodePort
   ports:
   - name: redis
     port: 6379
@@ -29161,7 +29166,6 @@ metadata:
     heritage: Helm
 spec:
   type: NodePort
-  clusterIP: None
   ports:
   - name: redis
     port: 6379
